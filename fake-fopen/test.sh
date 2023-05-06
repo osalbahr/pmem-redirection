@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Compiles and runs hello-ld-preload
+# Compiles and runs fake-fopen
 
 # if ! make clean; then
 #     echo "Failed to clean"
@@ -12,4 +12,4 @@ if ! make; then
     exit 1
 fi
 
-LD_PRELOAD=./myfopen.so ./hello-ld-preload
+LD_PRELOAD=./myfopen.so ./fake-fopen
