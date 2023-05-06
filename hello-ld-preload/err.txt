@@ -1,0 +1,1 @@
+./test.sh: line 15: 1272776 Segmentation fault      (core dumped) LD_PRELOAD=./mymalloc.so ./hello-ld-preload

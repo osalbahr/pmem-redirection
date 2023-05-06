@@ -1,2 +1,3 @@
 # Hello LD_PRELOAD
-- TODO: Every malloc() prints `Hello, World!`
+- Every fopen() prints `Hello, World!` and sets `errno` to `ENOENT`
+- Based on https://catonmat.net/simple-ld-preload-tutorial
