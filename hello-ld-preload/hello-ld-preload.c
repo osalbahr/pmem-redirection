@@ -9,19 +9,14 @@ int main()
   REPORTP(fp);
   if (fp == NULL) {
     puts("You've been pwn'd");
-    perror(filename);
-  } else {
-    puts("Success!");
-    perror(filename);
   }
+  perror(filename);
 
   char *bad = "bad";
   fp = fopen(bad, "r");
   REPORTP(fp);
-  if (fp == NULL) {
-    perror(bad);
-  } else {
+  if (fp != NULL) {
     puts("Success!");
-    perror(bad);
   }
+  perror(bad);
 }
