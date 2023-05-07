@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h> // strdup
 #include <stdlib.h> // malloc
+#include <errno.h>
 
 #define REPORTP(P) printf("%s = %p\n", #P, (P))
 
@@ -64,7 +65,8 @@ FILE *fopen(const char *path, const char *mode) {
 
   // Assumes "r"
   if (fp == NULL) {
-    fprintf(stderr, "fopen (r): file doesn't exist");
+    errno = ENOENT;
+    return NULL;
   }
 
   fp->seek = 0;
@@ -117,22 +119,23 @@ size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
   return idx;
 }
 
+// TODO: Not implemented
 int fclose(FILE *stream)
 {
   if (stream) {
-    printf("Closing %s", fp->path);
+    printf("Closing %s ", fp->path);
 
-    free(fp->buf);
-    putchar('.');
+    // free(fp->buf);
+    // putchar('.');
 
-    free(fp->path);
-    putchar('.');
+    // free(fp->path);
+    // putchar('.');
 
-    free(fp);
-    putchar('.');
+    // free(fp);
+    // putchar('.');
 
-    fp = NULL;
-    putchar('.');
+    // fp = NULL;
+    // putchar('.');
 
     puts("Done");
   }
@@ -142,10 +145,23 @@ int fclose(FILE *stream)
 
 int main()
 {
-  FILE *fp = fopen("hi", "a");
+  FILE *fp = fopen("hi", "r");
+  REPORTP(fp);
+  if (!fp) {
+    perror("hi");
+  } else {
+    fclose(fp);
+  }
+
+  fp = fopen("hi", "a");
+  REPORTP(fp);
+
   char *world = "Hello, World!\n";
   fwrite(world, 1, strlen(world), fp);
+
+  fclose(fp);
   
+  fp = fopen("hi", "r");
   char chptr[1];
   while (fread(chptr, 1, 1, fp))
     putchar(*chptr);

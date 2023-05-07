@@ -12,4 +12,14 @@ if ! make; then
     exit 1
 fi
 
-LD_PRELOAD=./myio.so ./fancy-file-io
+rm -f hi
+echo "libc:"
+time {
+    ./fancy-file-io;
+}
+
+rm -f hi
+echo -e "\nLD_PRELOAD:"
+time {
+    LD_PRELOAD=./myio.so ./fancy-file-io;
+}
