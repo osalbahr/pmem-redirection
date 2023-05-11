@@ -5,8 +5,31 @@
 #include <errno.h>
 #include <memkind.h>
 
-#define malloc(S) memkind_malloc(MEMKIND_DEFAULT, S)
-#define realloc(P, S) memkind_realloc(MEMKIND_DEFAULT, (P), (S))
+#define malloc(S) malloc_wrapper((S))
+#define realloc(P, S) realloc_wrapper((P), (S))
+
+void *malloc_wrapper(size_t size)
+{
+  printf("OK, malloc'ing %zd :)\n", size);
+
+  if (size == 0) {
+    printf("... shortcut, though\n");
+    return NULL;
+  }
+
+  printf("Calling  memkind_malloc with %zd\n ...", size);
+  void *ret = memkind_malloc(MEMKIND_DEFAULT, size);
+  printf("memkind_malloc %p = %zd\n", ret, size);
+  return ret;
+}
+
+void *realloc_wrapper(void *ptr, size_t size)
+{
+  printf("realloc %p -> %zd\n", ptr, size);
+  void *ret = memkind_realloc(MEMKIND_DEFAULT, ptr, size);
+  printf("%p memkind_realloc (now %p) = %zd\n", ptr, ret, size);
+  return ret;
+}
 
 
 #define REPORTP(P) printf("%s = %p\n", #P, (P))
