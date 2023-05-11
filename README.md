@@ -1,5 +1,6 @@
 # ld-preload-practice
-Practicing LD_PRELOAD
+Originally: ld-preload-practice
+Goal: I/O Redirection of Workflows to Local and Disaggregate Persistent Memory
 
 - Try running `test.sh` in each directory for some `LD_PRELOAD` magic
 
