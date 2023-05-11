@@ -32,7 +32,7 @@ grep -r '[.]local'
 
 ## Debugging
 
-For debugging, I wanted to have `ltrace` as follows. See [INSTALL](https://gitlab.com/cespedes/ltrace/-/blob/main/INSTALL).
+For debugging, I wanted to have `ltrace` as follows. See their [INSTALL](https://gitlab.com/cespedes/ltrace/-/blob/main/INSTALL).
 
 ```
 git clone https://gitlab.com/cespedes/ltrace.git
