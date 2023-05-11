@@ -34,3 +34,11 @@ else
     echo "FAILURE"
     exit 1
 fi
+
+# Debugging
+echo -e "\nDEBUGGING"
+if ! make optanemalloc.so; then
+    echo "Failed to compile optanemalloc.so"
+    exit 1
+fi
+LD_PRELOAD=./optanemalloc.so ./fake-malloc | tee -a out.txt
