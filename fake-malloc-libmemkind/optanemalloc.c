@@ -18,7 +18,10 @@ void *malloc(size_t size)
     return NULL;
   }
 
-  return memkind_malloc(MEMKIND_DEFAULT, size);
+  printf("Calling  memkind_malloc with %zd\n ...", size);
+  void *ret = memkind_malloc(MEMKIND_DEFAULT, size);
+  puts("memkind_malloc DONE");
+  return ret;
 }
 
 void free(void *ptr)

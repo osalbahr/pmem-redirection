@@ -1,5 +1,5 @@
 CFLAGS = -Wall -Wextra -g3 -std=c99
-EXE = fake-malloc mymalloc.so optanemalloc.so
+EXE = fake-malloc mymalloc.so optanemalloc.so exp/empty
 DEBUG = mymalloc optanemalloc
 TEST_FILES = out.txt
 

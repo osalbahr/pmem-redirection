@@ -41,4 +41,11 @@ if ! make optanemalloc.so; then
     echo "Failed to compile optanemalloc.so"
     exit 1
 fi
+
+echo -e "\nHELLO"
+if ! LD_PRELOAD=./optanemalloc.so exp/empty; then
+    echo "Failed to run empty"
+    exit 1
+fi
+
 LD_PRELOAD=./optanemalloc.so ./fake-malloc | tee -a out.txt
