@@ -6,7 +6,7 @@ Practicing LD_PRELOAD
 ##  Installation
 This project was built on [NCSU ARC Cluster](https://arcb.csc.ncsu.edu/~mueller/cluster/arc/), which uses CentOS Linux 7 (Core) x87_64. You might need to add some needed dependancies that don't exist on your system. Try `cat fetch.txt` for more system information.
 
-### Memkind Library
+### [Memkind Library](https://github.com/memkind/memkind)
 See [memkind#building-and-installing](https://github.com/memkind/memkind#building-and-installing).
 
 Because I don't have root permissions, I am installing in `$HOME/.local`.
@@ -31,6 +31,8 @@ grep -r '[.]local'
 ```
 
 ## Debugging
+
+### [ltrace](https://en.wikipedia.org/wiki/Ltrace)
 
 For debugging, I wanted to have `ltrace` as follows. See their [INSTALL](https://gitlab.com/cespedes/ltrace/-/blob/main/INSTALL).
 
