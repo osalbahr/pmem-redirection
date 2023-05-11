@@ -1,22 +1,25 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define REPORTP(P) printf("%s = %p\n", #P, (P))
+#define REPORTI(P) printf("%s = %d\n", #P, (P))
+#define REPORTC(P) printf("%s = %c\n", #P, (P))
 
 int main()
 {
-  char *filename = "README.md";
-  FILE *fp = fopen(filename, "r");
-  REPORTP(fp);
-  if (fp == NULL) {
-    puts("You've been pwn'd");
-  }
-  perror(filename);
+  int *iptr = malloc(sizeof(int));
+  REPORTP(iptr);
+  *iptr = 41;
+  REPORTI(*iptr);
+  free(iptr);
 
-  char *bad = "bad";
-  fp = fopen(bad, "r");
-  REPORTP(fp);
-  if (fp != NULL) {
-    puts("Success!");
-  }
-  perror(bad);
+  char *cptr = malloc(sizeof(char));
+  REPORTP(cptr);
+  *cptr = 'A';
+  REPORTC(*cptr);
+  free(cptr);
+
+  char *zero = malloc(0);
+  REPORTP(zero);
+  free(zero);
 }

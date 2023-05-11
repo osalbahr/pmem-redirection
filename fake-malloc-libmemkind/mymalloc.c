@@ -5,11 +5,21 @@
 
 // #define REPORTP(P) printf("%s = %p\n", #P, (P))
 
-FILE *fopen(const char *path, const char *mode) {
-  printf("Hello, %s :). So, you want to %s?\n", path, mode);
-  FILE *(*original_fopen)(const char*, const char*);
-  original_fopen = dlsym(RTLD_NEXT, "fopen");
-  return (*original_fopen)(path, mode);
+void *malloc(size_t size)
+{
+  printf("OK, malloc'ing %zd :)\n", size);
+
+  if (size == 0) {
+    printf("... shortcut, though\n");
+    return NULL;
+  }
+
+  static void *(*original_malloc)(size_t) = NULL;
+  if (original_malloc == NULL) {
+    printf("Calling dlsym\n");
+    original_malloc = dlsym(RTLD_NEXT, "malloc");
+  }
+  return (*original_malloc)(size);
 }
 
 // int main()

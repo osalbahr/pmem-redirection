@@ -1,6 +1,7 @@
 CFLAGS += -Wall -Wextra -g3 -std=c99
 EXE = fake-malloc mymalloc.so
 DEBUG = mymalloc
+TEST_FILES = out.txt
 
 all: $(EXE)
 debug: $(DEBUG)
@@ -13,4 +14,4 @@ mymalloc: mymalloc.c
 	$(CC) $(CFLAGS) mymalloc.c -o mymalloc -ldl
 
 clean:
-	$(RM) $(EXE)
+	$(RM) $(EXE) $(DEBUG) $(TEST_FILES)
