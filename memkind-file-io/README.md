@@ -1,3 +1,3 @@
-# Fake malloc (libmemkind)
-- malloc() is overridden to print a statement
-- TODO: use libmemkind https://pmem.io/blog/2020/01/introduction-to-libmemkind/
+# Memking File I/O
+- malloc/realloc as well as fopen/fread/fwrite are redirected to Memking
+- See https://pmem.io/blog/2020/01/introduction-to-libmemkind/
