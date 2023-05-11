@@ -16,7 +16,32 @@ Because I don't have root permissions, I am installing in `$HOME/.local`.
 make
 make install
 ```
+
+You'd also want to add the following to your `.bashrc`:
+```
+# man memkind
+export MANPATH=$MANPATH:$HOME/.local/share/man
+
+# TODO: maybe do the same for #include and ld's lib, instead of `-I` and `-L` respectively
+```
+
 You can choose to install it at a system level, or to another directory. You might need to modify some of the scripts to account for this change. I recommend running the following command at the top-level of the repo to find where `.local` is hardcoded:
 ```
 grep -r '[.]local'
+```
+
+## Debugging
+
+For debugging, I wanted to have `ltrace` as follows. See [INSTALL](https://gitlab.com/cespedes/ltrace/-/blob/main/INSTALL).
+
+```
+git clone https://gitlab.com/cespedes/ltrace.git
+cd ltrace
+./autogen.sh
+./configure --prefix=$HOME/.local
+make
+make install
+
+# You can also use
+./autogen.sh && ./configure --prefix=$HOME/.local && make && make install
 ```

@@ -18,7 +18,7 @@ void *malloc(size_t size)
     return NULL;
   }
 
-  memkind_malloc(MEMKIND_DEFAULT, size);
+  return memkind_malloc(MEMKIND_DEFAULT, size);
 }
 
 void free(void *ptr)
