@@ -20,13 +20,21 @@ void *malloc(size_t size)
 
   printf("Calling  memkind_malloc with %zd\n ...", size);
   void *ret = memkind_malloc(MEMKIND_DEFAULT, size);
-  puts("memkind_malloc DONE");
+  printf("memkind_malloc %p = %zd\n", ret, size);
   return ret;
 }
 
 void free(void *ptr)
 {
-  // TODO: destroy the memory
+  // printf("TODO: destroy %p\n", ptr);
+}
+
+void *realloc(void *ptr, size_t size)
+{
+  printf("realloc %p -> %zd\n", ptr, size);
+  void *ret = memkind_realloc(MEMKIND_DEFAULT, ptr, size);
+  printf("%p memkind_realloc (now %p) = %zd\n", ptr, ret, size);
+  return ret;
 }
 
 // int main()
