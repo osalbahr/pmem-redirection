@@ -47,7 +47,7 @@ else
     exit 1
 fi
 
-# Debugging
+# Debugging malloc
 # echo -e "\nDEBUGGING"
 # if ! make optanemalloc.so; then
 #     echo "Failed to compile optanemalloc.so"
@@ -59,3 +59,23 @@ fi
 #     echo "Failed to run empty"
 #     exit 1
 # fi
+
+rm -f hi
+echo -e "\nlibc i/o"
+./fancy-file-io | tee out-libc-io.txt
+if [[ $(grep -c "Hello, World" out-libc-io.txt) == 1 ]]; then
+    echo "SUCCESS"
+else
+    echo "FAILURE"
+    exit 1
+fi
+
+rm -f hi
+echo -e "\nmemkind i/o"
+LD_PRELOAD=./myio.so ./fancy-file-io | tee out-memkind-io.txt
+if [[ $(grep -c "Hello, World" out-memkind-io.txt) == 1 ]]; then
+    echo "SUCCESS"
+else
+    echo "FAILURE"
+    exit 1
+fi
