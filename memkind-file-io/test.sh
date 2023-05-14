@@ -16,7 +16,11 @@ echo "NORMAL"
 ./fake-malloc | tee out.txt
 
 echo -e "\nLD_PRELOAD w/ malloc"
-LD_PRELOAD=./mymalloc.so ./fake-malloc | tee -a out.txt
+if ! LD_PRELOAD=./mymalloc.so ./fake-malloc | tee -a out.txt 2> err.txt; then
+    echo "RUNTIME ERROR"
+    cat err.txt
+    exit 1
+fi
 
 # Verify that "41" was printed twice
 echo -e "\nTESTING"
@@ -24,6 +28,7 @@ if [[ $(grep -c "ptr = 41" out.txt) == 2 ]]; then
     echo "SUCCESS"
 else
     echo "FAILURE"
+    grep -c "ptr = 41" out.txt
     exit 1
 fi
 
