@@ -21,7 +21,6 @@ jobs:
       run: cd fancy-file-io && ./test.sh
     - name: Testing memkind-file-io
       run: |
-        mkdir $HOME/.local
         git clone https://github.com/memkind/memkind
         cd memkind
         ./autogen.sh
