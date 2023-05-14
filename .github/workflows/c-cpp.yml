@@ -13,13 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Testing hello-ld-preload
+    - name: Test hello-ld-preload
       run: cd hello-ld-preload && ./test.sh
-    - name: Testing fake-fopen
+    - name: Test fake-fopen
       run: cd fake-fopen && ./test.sh
-    - name: Testing fancy-file-io
+    - name: Test fancy-file-io
       run: cd fancy-file-io && ./test.sh
-    - name: Testing memkind-file-io
+    - name: Install Memkind dependancies
+      run: sudo apt-get install -y libnuma
+    - name: Install Memkind
       run: |
         git clone https://github.com/memkind/memkind
         cd memkind
@@ -27,6 +29,6 @@ jobs:
         ./configure --prefix=$HOME/.local
         make
         make install
-        cd ..
-        export LD_LIBRARY_PATH=$HOME/.local/lib
+    - name: Testing memkind-file-io
+        cd memkind-file-io
         ./test.sh
