@@ -20,7 +20,7 @@ jobs:
     - name: Test fancy-file-io
       run: cd fancy-file-io && ./test.sh
     - name: Install Memkind dependancies
-      run: sudo apt-get install -y libnuma
+      run: sudo apt-get install -y libnuma-dev
     - name: Install Memkind
       run: |
         git clone https://github.com/memkind/memkind
