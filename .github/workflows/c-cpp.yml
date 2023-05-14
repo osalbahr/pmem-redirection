@@ -19,3 +19,5 @@ jobs:
       run: cd fake-fopen && ./test.sh
     - name: Testing fancy-file-io
       run: cd fancy-file-io && ./test.sh
+    - name: Testing memkind-file-io
+      run: cd memkind-file-io && ./test.sh
