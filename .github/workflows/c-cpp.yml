@@ -30,5 +30,6 @@ jobs:
         make
         make install
     - name: Testing memkind-file-io
+      run: |
         cd memkind-file-io
         ./test.sh
