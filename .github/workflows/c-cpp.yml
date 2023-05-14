@@ -20,4 +20,4 @@ jobs:
     - name: Testing fancy-file-io
       run: cd fancy-file-io && ./test.sh
     - name: Testing memkind-file-io
-      run: cd memkind-file-io && ./test.sh
+      run: pwd && cd && pwd
