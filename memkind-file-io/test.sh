@@ -21,7 +21,6 @@ echo -e "\nLD_PRELOAD w/ malloc"
 
 if ! LD_PRELOAD=./mymalloc.so ./fake-malloc | tee -a out.txt 2> err.txt; then
     echo "RUNTIME ERROR"
-    cat err.txt
     exit 1
 fi
 
