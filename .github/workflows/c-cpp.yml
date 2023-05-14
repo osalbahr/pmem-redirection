@@ -19,17 +19,7 @@ jobs:
       run: cd fake-fopen && ./test.sh
     - name: Test fancy-file-io
       run: cd fancy-file-io && ./test.sh
-    - name: Install Memkind dependancies
-      run: sudo apt-get install -y libnuma-dev
     - name: Install Memkind
-      run: |
-        git clone https://github.com/memkind/memkind
-        cd memkind
-        ./autogen.sh
-        ./configure --prefix=$HOME/.local
-        make
-        make install
+      run: sudo apt-get install -y libmemkind-dev
     - name: Testing memkind-file-io
-      run: |
-        cd memkind-file-io
-        ./test.sh
+      run: cd memkind-file-io && ./test.sh
