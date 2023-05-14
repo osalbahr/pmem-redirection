@@ -15,3 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Testing hello-ld-preload
       run: cd hello-ld-preload && ./test.sh
+    - name: Testing fake-fopen
+      run: cd fake-fopen && ./test.sh
+    - name: Testing fancy-file-io
+      run: cd fancy-file-io && ./test.sh
