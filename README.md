@@ -22,7 +22,7 @@ make install
 You'd also want to add the following to your `.bashrc`:
 ```
 # man memkind
-export MANPATH=$MANPATH:$HOME/.local/share
+export MANPATH=$MANPATH:$HOME/.local/share/man
 
 # For some reason, this is needed in addition to `-L`
 export LD_LIBRARY_PATH=$HOME/.local/lib
