@@ -9,7 +9,7 @@ Goal: I/O Redirection of Workflows to Local and Disaggregate Persistent Memory
 
 If you have root access, you might want to use your favorite package manager for these libraries/packages, with the exception of maybe installing `libpmem2` from source if it's not offered for your system.
 
-This project was built on [NCSU ARC Cluster](https://arcb.csc.ncsu.edu/~mueller/cluster/arc/), which uses CentOS Linux 7 (Core) x87_64. You might need to add some needed dependancies that don't exist on your system. Try `cat fetch.txt` for more system information.
+This project was built on [NCSU ARC Cluster](https://arcb.csc.ncsu.edu/~mueller/cluster/arc/), which uses CentOS Linux 7 (Core) x86_64. You might need to add some needed dependancies that don't exist on your system. Try `cat fetch.txt` for more system information.
 
 ### [Memkind Library](https://github.com/memkind/memkind)
 See [memkind#building-and-installing](https://github.com/memkind/memkind#building-and-installing).
