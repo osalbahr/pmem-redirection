@@ -22,19 +22,30 @@ jobs:
         neofetch
         
     - name: Upgrade packages
-      run: sudo apt-get update && sudo apt-get upgrade
+      run: |
+        sudo apt-get update
+        sudo apt-get upgrade
       
     - name: Get runner information
-      run: uname -a && sudo apt-get install neofetch && neofetch
+      run: | 
+        uname -a
+        sudo apt-get install neofetch
+        neofetch
       
     - name: Test hello-ld-preload
-      run: cd hello-ld-preload && ./test.sh
+      run: | 
+        cd hello-ld-preload
+        ./test.sh
       
     - name: Test fake-fopen
-      run: cd fake-fopen && ./test.sh
+      run: |
+        cd fake-fopen
+        ./test.sh
       
     - name: Test fancy-file-io
-      run: cd fancy-file-io && ./test.sh
+      run: |
+        cd fancy-file-io
+        ./test.sh
       
     - name: Install Memkind
       run: sudo apt-get install libmemkind-dev
