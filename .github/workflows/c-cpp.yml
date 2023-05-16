@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Upgrade packages
+      run: sudo apt update && sudo apt upgrade -y
     - name: Test hello-ld-preload
       run: cd hello-ld-preload && ./test.sh
     - name: Test fake-fopen
@@ -20,6 +22,6 @@ jobs:
     - name: Test fancy-file-io
       run: cd fancy-file-io && ./test.sh
     - name: Install Memkind
-      run: sudo apt-get install -y libmemkind-dev
+      run: sudo apt install -y libmemkind-dev
     - name: (Skipped--for now) Testing memkind-file-io
       run: echo # cd memkind-file-io && ./test.sh
