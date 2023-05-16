@@ -34,6 +34,7 @@ export LD_LIBRARY_PATH=$HOME/.local/lib
 ```
 
 You can choose to install it at a system level, or to another directory. If you install at a system level, you probably don't need to modify the scripts to account for this change. If you're curious to see where `.local` is hardcoded, you can run the following command:
+
 ```
 grep -r '[.]local'
 ```
