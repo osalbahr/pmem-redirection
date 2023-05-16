@@ -6,6 +6,9 @@ Goal: I/O Redirection of Workflows to Local and Disaggregate Persistent Memory
 - Try running `test.sh` in each directory for some `LD_PRELOAD` magic
 
 ##  Installation
+
+If you have root access, you might want to use your favorite package manager for these libraries/packages, with the exception of maybe installing `libpmem2` from source if it's not offered for your system.
+
 This project was built on [NCSU ARC Cluster](https://arcb.csc.ncsu.edu/~mueller/cluster/arc/), which uses CentOS Linux 7 (Core) x87_64. You might need to add some needed dependancies that don't exist on your system. Try `cat fetch.txt` for more system information.
 
 ### [Memkind Library](https://github.com/memkind/memkind)
@@ -30,14 +33,14 @@ export LD_LIBRARY_PATH=$HOME/.local/lib
 # TODO: maybe do the same for #include and ld's lib, instead of `-I` and `-L` respectively
 ```
 
-You can choose to install it at a system level, or to another directory. You might need to modify some of the scripts to account for this change. I recommend running the following command at the top-level of the repo to find where `.local` is hardcoded:
+You can choose to install it at a system level, or to another directory. If you install at a system level, you probably don't need to modify the scripts to account for this change. If you're curious to see where `.local` is hardcoded, you can run the following command:
 ```
 grep -r '[.]local'
 ```
 
 ## Debugging
 
-If you have root access, you might want to use your favorite package manager.
+If you have root access, you might want to use your favorite package manager for these too.
 
 I was debating using [Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) since it can technically streamline installing from source, even without initally having root access, but is not officially supported. I also just wanted to try out installing from source more anyways.
 
