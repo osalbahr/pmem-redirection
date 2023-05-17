@@ -21,9 +21,9 @@ jobs:
         sudo apt-get install neofetch
         neofetch
         
-    - name: Upgrade packages
-      run: |
-        sudo apt-get upgrade
+#     - name: Upgrade packages
+#       run: |
+#         sudo apt-get upgrade
       
     - name: Get runner information
       run: | 
