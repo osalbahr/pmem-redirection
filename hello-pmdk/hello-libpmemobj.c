@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <libpmemobj.h>
+#include <string.h>
 
 int main()
 {
-  puts("Hello, libpmemobj!");
+  const char *msg = pmemobj_errormsg();
+  printf("Hello, pmemobj_errormsg = [%s] (%ld) at %p\n", msg, strlen(msg), msg);
 }
