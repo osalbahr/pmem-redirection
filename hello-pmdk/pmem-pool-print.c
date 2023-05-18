@@ -7,7 +7,7 @@
 
 #define POOL_LAYOUT "pmem_store_layout"
 #define POOL_SIZE (sizeof(int) * DATA_SIZE)
-#define PMEM_FILE_PATH "pmem_pool_file"
+#define PMEM_FILE_PATH "pmem-pool-file"
 
 #define ERROR(M) fprintf(stderr, "Error at line %d: %s = %s\n", __LINE__, #M, (M))
 
