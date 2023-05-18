@@ -39,6 +39,12 @@ You can choose to install it at a system level, or to another directory. If you 
 grep -r '[.]local'
 ```
 
+### P[ersistent Memory Development Kit (PMDK)](https://pmem.io/pmdk/)
+
+> The Persistent Memory Development Kit (PMDK) is a growing collection of libraries and tools. Tuned and validated on both Linux and Windows, the libraries build on the DAX (Direct Access) feature of those operating systems which allows applications to access persistent memory as memory-mapped files, as described in the SNIA NVM Programming Model.
+
+See [Installing PMDK](https://docs.pmem.io/persistent-memory/getting-started-guide/installing-pmdk/). I went with [Installing PMDK using Linux Packages](https://docs.pmem.io/persistent-memory/getting-started-guide/installing-pmdk/installing-pmdk-using-linux-packages). If you need libpmem2, you should use [Installing PMDK from Source on Linux](https://docs.pmem.io/persistent-memory/getting-started-guide/installing-pmdk/compiling-pmdk-from-source).
+
 ## Debugging
 
 If you have root access, you might want to use your favorite package manager for these too.
