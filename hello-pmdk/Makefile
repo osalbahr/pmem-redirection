@@ -20,4 +20,4 @@ check:
 	./check.sh
 
 clean:
-	$(RM) $(EXE) $(WORKFLOW) $(PMEM_FILE_PATH) $(TEMP_FILES)
+	$(RM) $(EXE) $(WORKFLOW) $(PMEM_FILE_PATH) $(WORKFLOW_FILE)
