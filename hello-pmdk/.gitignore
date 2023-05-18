@@ -1,3 +1,14 @@
+# EXE
 hello-libpmem
 hello-libpmem2
 hello-libpmemobj
+
+# WORKFLOW
+pmem_store
+pmem_print
+
+# PMEM_FILE_PATH
+pmem_file
+
+# WORKFLOW_FILE
+numbers.txt
