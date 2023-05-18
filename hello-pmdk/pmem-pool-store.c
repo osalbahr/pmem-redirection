@@ -14,7 +14,7 @@ int main() {
     PMEMobjpool *pmem_pool;
     PMEMoid pmem_oid;
     int *pmem_ptr;
-    int data[DATA_SIZE] = {42, 1337, 777};
+    int data[DATA_SIZE] = {'A', 'B', 'C'};
 
     if ((pmem_pool = pmemobj_create("pmem-pool-file", POOL_LAYOUT, POOL_SIZE + PMEMOBJ_MIN_POOL, 0666)) == NULL) {
         ERROR(pmemobj_errormsg());

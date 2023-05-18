@@ -1,33 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <libpmem.h>
-
-#define PMEM_FILE_PATH "pmem-file"
-
-#define ERROR(M) fprintf(stderr, "%s = %s\n", #M, (M))
+#include <sys/shm.h>
+#include "shared-memory.h"
 
 int main() {
-    int *pmem_ptr;
-    int data[3] = {42, 1337, 777};
+    int shm_id;
+    Data *shm_ptr;
 
-    size_t mapped_len;
-    int is_pmem;
-
-    pmem_ptr = (int *)pmem_map_file(PMEM_FILE_PATH, sizeof(int) * 3,
-                                   PMEM_FILE_CREATE | PMEM_FILE_EXCL,
-                                   0666, &mapped_len, &is_pmem);
-    if (pmem_ptr == NULL) {
-		ERROR(pmem_errormsg());
+    // Create a shared memory segment
+    shm_id = shmget(SHM_KEY, sizeof(Data), IPC_CREAT | 0666);
+    if (shm_id == -1) {
+        perror("shmget");
         exit(1);
     }
 
-    // Store data in pmem_ptr
-    for (int i = 0; i < 3; i++) {
-        pmem_ptr[i] = data[i];
+    // Attach to the shared memory segment
+    shm_ptr = (Data *)shmat(shm_id, NULL, 0);
+    if (shm_ptr == (Data *)(-1)) {
+        perror("shmat");
+        exit(1);
     }
 
-    pmem_persist(pmem_ptr, sizeof(int) * 3);
-    pmem_unmap(pmem_ptr, mapped_len);
+    // Store data in shm_ptr
+    shm_ptr->values[0] = 'A';
+    shm_ptr->values[1] = 'B';
+    shm_ptr->values[2] = 'C';
+
+    // Detach from the shared memory segment
+    if (shmdt(shm_ptr) == -1) {
+        perror("shmdt");
+        exit(1);
+    }
 
     return 0;
 }

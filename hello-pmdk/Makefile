@@ -5,7 +5,6 @@ EXE = hello-libpmem hello-libpmemobj
 WORKFLOW = pmem-store pmem-print
 POOL_WORKFLOW = pmem-pool-store pmem-pool-print
 
-PMEM_FILE = pmem-file
 PMEM_POOL_FILE = pmem-pool-file
 
 WORKFLOW_FILE = numbers.txt
@@ -34,4 +33,5 @@ clean:
 	$(POOL_WORKFLOW) \
 	$(PMEM_FILE) \
 	$(PMEM_POOL_FILE) \
-	$(WORKFLOW_FILE)
+	$(WORKFLOW_FILE) \
+	pmem_pool # I don't know
