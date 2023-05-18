@@ -3,12 +3,12 @@ hello-libpmem
 hello-libpmem2
 hello-libpmemobj
 
-# WORKFLOW
-pmem_store
-pmem_print
+# Workflow exe's
+*-store
+*-print
 
-# PMEM_FILE_PATH
-pmem_file
+# Workflow files
+pmem-*file
 
-# WORKFLOW_FILE
+# WORKFLOW_FILE (temp)
 numbers.txt
