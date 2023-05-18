@@ -31,6 +31,7 @@ clean:
 	$(RM) \
 	$(EXE) \
 	$(WORKFLOW) \
+	$(POOL_WORKFLOW) \
 	$(PMEM_FILE) \
 	$(PMEM_POOL_FILE) \
 	$(WORKFLOW_FILE)
