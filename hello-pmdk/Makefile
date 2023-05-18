@@ -1,6 +1,6 @@
 CFLAGS = -std=gnu99 -Wall -Wextra -O3
-EXE = hello-libpmem hello-libpmem2 hello-libpmemobj
-LDLIBS = -lpmem -lpmem2 -lpmemobj
+EXE = hello-libpmem hello-libpmemobj
+LDLIBS = -lpmem -lpmemobj
 
 all: $(EXE)
 

@@ -5,5 +5,5 @@
 int main()
 {
   const char *msg = pmem_errormsg();
-  printf("Hello, pmem2_errormsg = [%s] (%ld) at %p\n", msg, strlen(msg), msg);
+  printf("Hello, pmem_errormsg = [%s] (%ld) at %p\n", msg, strlen(msg), msg);
 }
