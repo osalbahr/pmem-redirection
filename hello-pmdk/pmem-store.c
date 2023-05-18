@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <libpmem.h>
 
-#define PMEM_FILE_PATH "pmem_file"
+#define PMEM_FILE_PATH "pmem-file"
 
 #define ERROR(M) fprintf(stderr, "%s = %s\n", #M, (M))
 

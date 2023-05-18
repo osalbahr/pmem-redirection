@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 n=3
 N=(42 1337 777)

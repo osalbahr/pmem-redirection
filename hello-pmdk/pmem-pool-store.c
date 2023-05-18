@@ -16,7 +16,7 @@ int main() {
     int *pmem_ptr;
     int data[DATA_SIZE] = {42, 1337, 777};
 
-    if ((pmem_pool = pmemobj_create("pmem_pool_file", POOL_LAYOUT, POOL_SIZE + PMEMOBJ_MIN_POOL, 0666)) == NULL) {
+    if ((pmem_pool = pmemobj_create("pmem-pool-file", POOL_LAYOUT, POOL_SIZE + PMEMOBJ_MIN_POOL, 0666)) == NULL) {
         ERROR(pmemobj_errormsg());
         exit(1);
     }
