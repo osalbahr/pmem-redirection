@@ -39,7 +39,7 @@ You can choose to install it at a system level, or to another directory. If you 
 grep -r '[.]local'
 ```
 
-### P[ersistent Memory Development Kit (PMDK)](https://pmem.io/pmdk/)
+### [Persistent Memory Development Kit (PMDK)](https://pmem.io/pmdk/)
 
 > The Persistent Memory Development Kit (PMDK) is a growing collection of libraries and tools. Tuned and validated on both Linux and Windows, the libraries build on the DAX (Direct Access) feature of those operating systems which allows applications to access persistent memory as memory-mapped files, as described in the SNIA NVM Programming Model.
 
