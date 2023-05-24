@@ -12,6 +12,3 @@ pmem-*file
 
 # WORKFLOW_FILE (temp)
 numbers.txt
-
-# I don't know
-pmem_pool
