@@ -84,4 +84,4 @@ curl -O https://sourceware.org/pub/valgrind/valgrind-3.21.0.tar.bz2 && cd valgri
 
 ### [GEF (GDB Enhanced Features)](https://github.com/hugsy/gef)
 
-Since `gdb` rpm's are outdated, I ended up needing to `spack install gdb`. I initially installed `gdb` from source, but had glibc version issues and thought I'd use a tool that automates the whole process, [`spack`](https://github.com/spack/spack).
+Since `gdb` rpm's are outdated, I ended up needing to `spack install gdb && spack load gdb`. I initially installed `gdb` from source, but had glibc version issues and thought I'd use a tool that automates the whole process, [`spack`](https://github.com/spack/spack).
