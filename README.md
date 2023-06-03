@@ -50,7 +50,7 @@ See [Installing PMDK](https://docs.pmem.io/persistent-memory/getting-started-gui
 
 If you have root access, you might want to use your favorite package manager for these too.
 
-I was debating using [Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) since it can technically streamline installing from source, even without initally having root access, but is not officially supported. I also just wanted to try out installing from source more anyways.
+I was debating using [Homebrew](https://en.wikipedia.org/wiki/Homebrew_(package_manager)) since it can technically streamline installing from source, even without initally having root access, but is not officially supported (and [faced some issues](https://github.com/orgs/Homebrew/discussions?discussions_q=author%3Aosalbahr+CentOS)). I also just wanted to try out installing from source more anyways.
 
 ### [ltrace](https://en.wikipedia.org/wiki/Ltrace)
 
@@ -68,7 +68,7 @@ make install
 ./autogen.sh && ./configure --prefix=$HOME/.local && make && make install
 ```
 
-### [valgrind](https://en.wikipedia.org/wiki/Valgrind)
+### [Valgrind](https://en.wikipedia.org/wiki/Valgrind)
 
 To further investigate the memory error, I wanted to have `valgrind`. See https://valgrind.org/downloads
 ```
@@ -81,3 +81,7 @@ make install
 # You can also use
 curl -O https://sourceware.org/pub/valgrind/valgrind-3.21.0.tar.bz2 && cd valgrind-3.21.0 && ./configure --prefix=$HOME/.local && make && make install
 ```
+
+### [GEF (GDB Enhanced Features)](https://github.com/hugsy/gef)
+
+Since `gdb` rpm's are outdated, I ended up needing to `spack install gdb`. I initially installed `gdb` from source, but had glibc version issues and thought I'd use a tool that automates the whole process, [`spack`](https://github.com/spack/spack).
