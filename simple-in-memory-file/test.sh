@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -10,11 +10,11 @@ fi
 
 test()
 {
-    ./main \
-	&& LD_PRELOAD=./myfopen.so ./main
+    ./main | tee actual.txt \
+	&& LD_PRELOAD=./myfopen.so ./main | tee -a actual.txt
 }
 
-if ! test | tee actual.txt
+if ! test
 then
     echo "FAILED to test"
     exit 1
