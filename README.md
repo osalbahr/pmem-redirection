@@ -90,7 +90,7 @@ I experimented with [`fio`](https://github.com/axboe/fio), a well-known tool for
 
 1. `$HOME/fio.txt` - Network Filesystem (NFS)
 2. `/mnt/fsdax/$USER/fio.txt` - Persistent Memory (PMEM)
-3. `/tmp/$USER/fio.txt` - SSD (note: I called the *job* in the *jobfile* "ram-tmp" incorrectly, it should be "ssd-tmp")
+3. `/tmp/$USER/fio.txt` - SSD (tmpfs)
 
 ```console
 [osalbahr@c63 fio]$ head *fio
@@ -106,8 +106,8 @@ rw=randrw
 size=${SIZE}
 filename=/mnt/fsdax/${USER}/fio.txt
 
-==> ram-tmp.fio <==
-[ram-tmp]
+==> ssd-tmp.fio <==
+[ssd-tmp]
 rw=randrw
 size=${SIZE}
 filename=/tmp/${USER}/fio.txt
@@ -119,7 +119,7 @@ Here is the interesting part after running the default random read/write benchma
 [osalbahr@c63 fio]$ SIZE=1GiB fio *.fio
 nfs-home: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
 pmem-fsdax: (g=1): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
-ram-tmp: (g=2): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+ssd-tmp: (g=2): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
 ...
 Run status group 0 (all jobs):
    READ: bw=12.1MiB/s (12.7MB/s), 12.1MiB/s-12.1MiB/s (12.7MB/s-12.7MB/s), io=477MiB (500MB), run=39364-39364msec
