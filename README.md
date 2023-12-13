@@ -1,7 +1,5 @@
 # PMEM Redirection
 
-Originally: ld-preload-practice
-
 Goal: I/O Redirection of Workflows to Local and Disaggregate Persistent Memory
 
 - Try running `test.sh` in each directory for some `LD_PRELOAD` magic
@@ -85,3 +83,56 @@ curl -O https://sourceware.org/pub/valgrind/valgrind-3.21.0.tar.bz2 && cd valgri
 ### [GEF (GDB Enhanced Features)](https://github.com/hugsy/gef)
 
 Since `gdb` rpm's are outdated, I ended up needing to `spack install gdb && spack load gdb`. I initially installed `gdb` from source, but had glibc version issues and thought I'd use a tool that automates the whole process, [`spack`](https://github.com/spack/spack).
+
+## Benchmarks
+
+I experimented with [`fio`](https://github.com/axboe/fio), a well-known tool for I/O benchmarking. Here are some simple benchmarks with the following target files:
+
+1. `$HOME/fio.txt` - Network Filesystem (NFS)
+2. `/mnt/fsdax/$USER/fio.txt` - Persistent Memory (PMEM)
+3. `/tmp/$USER/fio.txt` - SSD (note: I called the *job* in the *jobfile* "ram-tmp" incorrectly, it should be "ssd-tmp")
+
+```console
+[osalbahr@c63 fio]$ head *fio
+==> nfs-home.fio <==
+[nfs-home]
+rw=randrw
+size=${SIZE}
+filename=${HOME}/fio.txt
+
+==> pmem-fsdax.fio <==
+[pmem-fsdax]
+rw=randrw
+size=${SIZE}
+filename=/mnt/fsdax/${USER}/fio.txt
+
+==> ram-tmp.fio <==
+[ram-tmp]
+rw=randrw
+size=${SIZE}
+filename=/tmp/${USER}/fio.txt
+```
+
+Here is the interesting part after running the default random read/write benchmarks with `1GiB` of memory (full log below):
+
+```console
+[osalbahr@c63 fio]$ SIZE=1GiB fio *.fio
+nfs-home: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+pmem-fsdax: (g=1): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+ram-tmp: (g=2): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+...
+Run status group 0 (all jobs):
+   READ: bw=12.1MiB/s (12.7MB/s), 12.1MiB/s-12.1MiB/s (12.7MB/s-12.7MB/s), io=477MiB (500MB), run=39364-39364msec
+  WRITE: bw=12.1MiB/s (12.7MB/s), 12.1MiB/s-12.1MiB/s (12.7MB/s-12.7MB/s), io=477MiB (500MB), run=39364-39364msec
+
+Run status group 1 (all jobs):
+   READ: bw=491MiB/s (515MB/s), 491MiB/s-491MiB/s (515MB/s-515MB/s), io=476MiB (499MB), run=969-969msec
+  WRITE: bw=493MiB/s (517MB/s), 493MiB/s-493MiB/s (517MB/s-517MB/s), io=478MiB (501MB), run=969-969msec
+
+Run status group 2 (all jobs):
+   READ: bw=25.1MiB/s (26.3MB/s), 25.1MiB/s-25.1MiB/s (26.3MB/s-26.3MB/s), io=477MiB (500MB), run=19036-19036msec
+  WRITE: bw=25.0MiB/s (26.2MB/s), 25.0MiB/s-25.0MiB/s (26.2MB/s-26.2MB/s), io=477MiB (500MB), run=19036-19036msec
+...
+```
+
+For the full log, see https://gist.githubusercontent.com/osalbahr/18e4e3d0965e510177ed4083ab2ca82c/raw/fa615e7c8675548b7280e28a104304acd2e95da6/experiment-fio.md
