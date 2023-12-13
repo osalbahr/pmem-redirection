@@ -135,4 +135,4 @@ Run status group 2 (all jobs):
 ...
 ```
 
-For the full log, see https://gist.githubusercontent.com/osalbahr/18e4e3d0965e510177ed4083ab2ca82c/raw/fa615e7c8675548b7280e28a104304acd2e95da6/experiment-fio.md
+For the full log, see [this gist](https://gist.github.com/osalbahr/18e4e3d0965e510177ed4083ab2ca82c).
